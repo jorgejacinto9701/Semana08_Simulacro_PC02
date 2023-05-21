@@ -13,7 +13,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Lista de Productos - Jacinto"
+        android:text="Lista de Productos - Jacinto - G1"
         android:textSize="20dp"
         android:textAlignment="center"
         />
@@ -25,9 +25,12 @@
         android:text="Listar"
         />
 
-    <ListView
-        android:id="@+id/lstProductos"
+    <GridView
+        android:id="@+id/gridProductos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:numColumns="2"
+        android:horizontalSpacing="6dp"
+        android:verticalSpacing="6dp"
         />
 </androidx.appcompat.widget.LinearLayoutCompat>

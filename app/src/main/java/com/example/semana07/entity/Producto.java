@@ -1,6 +1,8 @@
 package com.example.semana07.entity;
 
-public class Producto {
+import java.io.Serializable;
+
+public class Producto implements Serializable {
     private int id;
     private String title;
     private double price;

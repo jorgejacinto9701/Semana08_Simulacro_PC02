@@ -2,9 +2,12 @@ package com.example.semana07;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ListView;
 
 import com.example.semana07.adapter.ProductoAdapter;
@@ -25,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnListar;
 
     //ListView
-    ListView lstProductos;
+    GridView gridProductos;
     ArrayList<Producto> data = new ArrayList<Producto>();
     ProductoAdapter adpatador;
 
@@ -39,9 +42,21 @@ public class MainActivity extends AppCompatActivity {
 
         btnListar = findViewById(R.id.btnLista);
 
-        lstProductos = findViewById(R.id.lstProductos);
+        gridProductos = findViewById(R.id.gridProductos);
         adpatador = new ProductoAdapter(this, R.layout.activity_item_producto, data);
-        lstProductos.setAdapter(adpatador);
+        gridProductos.setAdapter(adpatador);
+
+        gridProductos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Producto objProducto  =  data.get(position);
+
+                Intent intent = new Intent(MainActivity.this, DetalleProductoActivity.class);
+                intent.putExtra("VAR_OBJETO", objProducto);
+                startActivity(intent);
+            }
+        });
 
         serviceProducto = ConnectionRest.getConnection().create(ServiceProducto.class);
 
